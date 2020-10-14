@@ -21,7 +21,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url, {
     useNewUrlParser: true
 }).then(() => {
-    console.log("Successfully connected to the database");    
+    console.log("Successfully connected to the database");
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
@@ -29,13 +29,14 @@ mongoose.connect(dbConfig.url, {
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+    res.json({ "message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes." });
 });
 
 // Require Notes routes
 require('./app/routes/note.routes.js')(app);
 
+var PORT = process.env.PORT || 3000;
 // listen for requests
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server is listeningg on port 3000");
 });
